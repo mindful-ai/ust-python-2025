@@ -67,7 +67,8 @@ Session 2 [40]
 Problem Statement #1:
 --------------------------------------------------------
 
-Create a Python class called Circle that represents a circle. The class should allow the following:
+Create a Python class called Circle that represents a circle. T
+he class should allow the following:
 
 Use @property to return the circumference of the circle using the formula 2 * π * radius.
 
@@ -85,6 +86,16 @@ Use @property to return the current balance with a message like "Your balance is
 
 Use @classmethod to create a BankAccount from a dictionary containing account details like:
 {"name": "Alice", "balance": 10000}
+
+class BankAccount:
+
+    def __init__(self, n, a):
+        self.name = name
+        self.balance = a
+
+    @classmethod
+    def from_dict(cls, **kargs):
+        return BankAccount(dict(kargs).name, dict(kargs).balance)
 
 Use @staticmethod to check if a given withdrawal amount is valid, i.e., 
 it must be a positive number and less than or equal to the current balance.
