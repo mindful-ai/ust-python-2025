@@ -89,3 +89,36 @@ and
 versatile
 programming
 language.
+
+Session 3: [40]
+---------------------------------------------------------------------------------------------------------
+
+Task 1: Checking method existance
+--------------------------------------------------
+
+Create a metaclass called RequireToString that ensures any class using it must define a 
+__str__ method. If a class does not define __str__, raise a TypeError during class creation.
+
+Task 2: Injecting methods
+--------------------------------------------------
+
+Create a metaclass called AutoInit that automatically injects an __init__ method into 
+any class that:
+
+Defines a class-level list called init_fields, e.g., ["name", "salary"].
+
+If the __init__ method already exists, the metaclass should not override it.
+
+The injected __init__ should assign values to those fields as instance attributes.
+
+Raise an error if the init_fields list is missing or not a list.
+
+Task 3: Creating custom exception
+--------------------------------------------------
+
+Create a NegativeNumberException
+
+Define a nfactorial(n) function in which the above exception is raised
+
+Use an exception handler to capture the exception when factorial() is
+called with negative numbers
