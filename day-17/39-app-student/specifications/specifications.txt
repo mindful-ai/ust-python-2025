@@ -34,7 +34,7 @@ Organize code into multiple files.
 student_mgmt/
 │
 ├── main.py                    # CLI interface
-├── student.py                 # Student class
+├── student.py                 # Student class - add_student(name, age, grade)
 ├── student_manager.py         # Manager to handle logic
 ├── storage.py                 # File read/write
 ├── students.json              # Data storage
