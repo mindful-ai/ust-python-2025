@@ -1,0 +1,7 @@
+Session 1 [30]
+------------------------------------------------------------------------
+
+Run through the client server examples in 43-sc-networking-with-sockets 
+directory and clearly understand the usage of the sockets library
+
+
