@@ -5,3 +5,93 @@ Run through the client server examples in 43-sc-networking-with-sockets
 directory and clearly understand the usage of the sockets library
 
 
+Session 2: Django first project
+------------------------------------------------------------------------
+
+Creating project
+------------------------------------------------
+
+Step 1: Create a virtual environment
+
+> python -m venv testenv
+> cd ./testenv/Scripts     <- Windows
+> activate
+
+Setp 2: Installing Django
+
+> pip install django
+> django-admin       <- test the installation
+
+Step 3: Creating a Django project
+
+> django-admin startproject firstwebproject
+
+Step 4: Run the development server
+
+> cd firstwebproject
+> python manage.py runserver
+
+Creating application
+------------------------------------------------
+
+A django project can have multiple applications
+
+Step 5: Create an application
+
+> python manage.py startapp firstapp
+
+Step 6: Registering the application
+NOTE: The project should know the existance of the application
+      That's why we should register the application in the project
+
+    Go to .\firstwebproject\firstapp
+    Open settings.py
+    Add 'firstapp' in INSTALLED_APPS = [ ... ]
+
+        # Application definition
+
+        INSTALLED_APPS = [
+            'firstapp',
+            'django.contrib.admin',
+            'django.contrib.auth',
+            ...
+            ...
+        ]
+
+Step 7: Create URL -> function mapping
+
+firstapp/urls.py ->
+------------------------
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.home, name='home') # 127.0.0.1:8000/ -> run a function called home in views
+]
+
+firstwebproject/urls.py ->
+--------------------------------
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('myapp.urls'))
+]
+
+
+Step 8: Update the view to add home view
+--------------------------------------------
+firstapp/views.py ->
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+# Create your views here.
+
+def home(request):
+    return HttpResponse("<h1>Hello UST!</h1>")
+
+
+Re-run the project server
