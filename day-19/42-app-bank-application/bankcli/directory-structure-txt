@@ -1,0 +1,14 @@
+bankcli/
+├── bankapp/
+│   ├── __init__.py
+│   ├── models.py         # Data classes and logic
+│   ├── db.py             # In-memory or file-based persistence
+│   └── main.py           # Typer CLI entry point
+├── pyproject.toml        # For installation
+└── README.md
+
+
+
+Installation of the bank app:
+
+pip install -e .          # Execute this where ever .toml file is found
