@@ -1,8 +1,3 @@
-[project]
-name = "bankcli"
-version = "0.1.0"
-description = "A CLI Bank Account Manager using Typer"
-dependencies = ["typer[all]", "rich"]
-
-[project.scripts]
-bankcli = "bankapp.main:app"
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"

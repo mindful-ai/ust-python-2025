@@ -1,8 +1,10 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Optional
+import uuid
 
-@dataclass
-class Account:
+@dataclass               # <- Automatically insert a constructor for Account class
+class Account:           # Reference -> https://docs.python.org/3/library/dataclasses.html
+
     account_id: str
     name: str
     balance: float = 0.0

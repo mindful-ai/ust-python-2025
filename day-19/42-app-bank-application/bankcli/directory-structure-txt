@@ -1,11 +1,19 @@
 bankcli/
+│
 ├── bankapp/
 │   ├── __init__.py
-│   ├── models.py         # Data classes and logic
-│   ├── db.py             # In-memory or file-based persistence
-│   └── main.py           # Typer CLI entry point
-├── pyproject.toml        # For installation
-└── README.md
+│   ├── main.py         # Typer CLI logic
+│   ├── db.py           # Persistence and authentication logic
+│   ├── models.py       # Your updated Account model
+│   ├── security.py     # PIN hashing/verification
+│
+├── accounts.json       # JSON-based persistent storage
+├── bankcli.py          # CLI entrypoint (for testing)
+├── requirements.txt
+├── README.md
+├── pyproject.toml      # For building/installing CLI
+└── setup.py            # CLI installation config
+
 
 
 

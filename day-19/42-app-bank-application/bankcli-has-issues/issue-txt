@@ -1,0 +1,3 @@
+The issue is that the accounts dictionary in db.py is in-memory only — meaning each time you run a new CLI command, it reloads the script from scratch, and the accounts dictionary is empty again.
+
+That’s because Typer apps (and CLI commands in general) don’t persist memory across runs. We need a simple persistent storage — such as writing to a JSON file between runs.
