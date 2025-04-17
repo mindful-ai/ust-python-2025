@@ -1,0 +1,70 @@
+Re-use the project developed in Day 19
+
+Example #1 Create a basic template
+-------------------------------------------------------------------------------------------------
+Create a custom HTML Template that displays:
+"Welcome to Django! Purushotham"
+
+Create firstwebproject\firstapp\templates\firstapp 
+Create home.html with some basic html content
+
+In view.py ->
+def index(request):
+    return render(request, 'firstapp/index.html')
+
+In urls.py ->
+path('index', views.index, name='index') # 127.0.0.1:8000/index
+
+NOTE: by default, django apps always look for a folder called "templates"
+Therefore all templates should be in this folder
+
+Also note: firstwebproject/settings.py ->
+TEMPLATES = [
+    {
+        ....
+        'APP_DIRS': True,   # This should be true
+        'OPTIONS': {
+        }
+        ...
+    }
+]
+
+Example #2 Using Static Files
+-------------------------------------------------------------------------------------------------
+
+Refer: settings.py ->
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.2/howto/static-files/
+
+STATIC_URL = 'static/'
+
+'''
+# Usually for app-level static files, Django finds them. 
+# But if you create a static/ folder in your project root, you can add:
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    "/var/www/static/",
+]
+'''
+----------------------------------------------------------
+
+Create firstwebproject\firstapp\static\firstapp 
+Create style.css with some basic css content
+Download some image into static\firstapp
+
+Modify index.html ->
+
+{% load static %}    # <- Aliasing the static
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     ....
+    <link rel="stylesheet" type="text/css" href="{% static 'firstapp/style.css' %}"> # <- Referencing static.css
+</head>
+<body>
+
+     ....
+    <img src="{% static 'firstapp\sonicboom.jpg' %}" alt="My Image"> # <- Referening an image file in static
+</body>
+</html>
