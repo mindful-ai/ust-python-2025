@@ -1,3 +1,6 @@
+Covers templates and models
+
+
 -----------------------------------------------------------------------
                                 TEMPLATES
 -----------------------------------------------------------------------
@@ -133,3 +136,135 @@ Exercise 4
 
 Review the use of calculator.html and calc.html
 Understand the differences
+
+-----------------------------------------------------------------------
+                                MODELS
+-----------------------------------------------------------------------
+
+In Django, models are Python classes that define the structure of your database tables. 
+Each model class represents a table, and each class attribute represents a field/column in that table.
+
+Django provides an Object-Relational Mapper (ORM) that allows you to 
+interact with the database using Python code instead of writing raw SQL.
+
+Why Use Models?
+    Define database structure in Python
+    Automatically get an admin interface to manage data
+    Use Django ORM for queries: .filter(), .get(), .all(), etc.
+    Ensure consistency between your Python code and the database
+
+Create your models in firstapp/models.py ->
+
+class Book(models.Model):
+
+    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=100)
+    published_date = models.DateField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f"{self.title} by {self.author}"
+
+Issue commands:
+
+>python manage.py makemigrations
+>python manage.py migrate
+
+Invoke the interactive console:
+
+>python manage.py shell
+
+>>> from firstapp.models import Book
+>>> book = Book(1, 'Beginning Django', 'Anil Kumar', '2021-01-01', 19.99) 
+>>> book.save()
+>>> book2 = Book(2, 'Beginning Python', 'Anil Kumar', '2021-01-01', 19.99)  
+>>> book2.save()
+>>> all = Book.objects.all()
+>>> all
+<QuerySet [<Book: Beginning Django by Anil Kumar>, <Book: Beginning Python by Anil Kumar>]>
+>>> book_by_anil = Book.objects.filter(author="Anil Kumar")
+>>> book_by_anil
+<QuerySet [<Book: Beginning Django by Anil Kumar>, <Book: Beginning Python by Anil Kumar>]>
+>>>
+
+---------------------------------------------------------------------------------------------------
+
+CRUD OPERATIONS:
+
+from books.models import Book
+from datetime import date
+
+book1 = Book.objects.create(title="The Pragmatic Programmer", author="Andy Hunt", published_date=date(1999, 10, 20), price=45.99)
+book2 = Book.objects.create(title="Clean Code", author="Robert C. Martin", published_date=date(2008, 8, 1), price=39.99)
+book3 = Book.objects.create(title="Effective Python", author="Brett Slatkin", published_date=date(2015, 3, 15), price=29.99)
+book4 = Book.objects.create(title="Python Tricks", author="Dan Bader", published_date=date(2017, 12, 5), price=24.99)
+book5 = Book.objects.create(title="Fluent Python", author="Luciano Ramalho", published_date=date(2015, 8, 20), price=49.99)
+
+
+# Get all books
+Book.objects.all()
+
+# Get books by a specific author
+Book.objects.filter(author="Robert C. Martin")
+
+# Get books with price less than $40
+Book.objects.filter(price__lt=40)
+
+# Get books published after 2010
+Book.objects.filter(published_date__year__gt=2010)
+
+# Order books by price (ascending)
+Book.objects.all().order_by('price')
+
+# Count total books
+Book.objects.count()
+
+
+# Update the price of 'Clean Code'
+book = Book.objects.get(title="Clean Code")
+book.price = 35.00
+book.save()
+
+# Bulk update: increase price of all books by $5
+for book in Book.objects.all():
+    book.price += 5
+    book.save()
+
+# Verify updates
+Book.objects.all().values('title', 'price')
+
+
+# Delete a specific book
+book = Book.objects.get(title="Python Tricks")
+book.delete()
+
+# Bulk delete: Delete all books by Brett Slatkin
+Book.objects.filter(author="Brett Slatkin").delete()
+
+# Show remaining books
+Book.objects.all()
+
+
+# Get first and last book by ordering
+Book.objects.order_by('published_date').first()
+Book.objects.order_by('-published_date').first()
+
+# Get distinct authors
+Book.objects.values_list('author', flat=True).distinct()
+
+# Get books with 'Python' in the title
+Book.objects.filter(title__icontains='python')
+
+
+-----------------------------------------------------------------------
+
+Numeric Look Ups:
+
+Lookup | Meaning | Example
+exact | Equal to | Book.objects.filter(price__exact=40)
+gt | Greater than | Book.objects.filter(price__gt=40)
+gte | Greater than or equal | Book.objects.filter(price__gte=40)
+lt | Less than | Book.objects.filter(price__lt=40)
+lte | Less than or equal | Book.objects.filter(price__lte=40)
+in | In a list of values | Book.objects.filter(price__in=[29.99, 39.99])
+range | Between two values (inclusive) | Book.objects.filter(price__range=(30, 50))
