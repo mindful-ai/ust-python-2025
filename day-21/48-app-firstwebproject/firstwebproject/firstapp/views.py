@@ -48,7 +48,7 @@ def result(request):
     print(request.method)
     print(request.POST)
     if request.method == 'POST': 
-        name = request.POST.get('name', 'Unknown')
+        name = request.POST.get('name', 'Unknown') # requests.POST['name']
         age = request.POST.get('age', 'Unkown')
         context = {
             'name': name,
@@ -57,3 +57,33 @@ def result(request):
         return render(request, 'firstapp/output.html', context)
     else:
         return render(request, 'firstapp/input.html')
+    
+def calculator(request):
+    
+    result = None
+    
+    if request.method == "POST":
+        
+        try:
+            a = float(request.POST.get('a'))
+            b = float(request.POST.get('b'))
+            op = request.POST.get('operation')
+
+            if op == 'add':
+                result = a + b
+            elif op == 'subtract':
+                result = a - b
+            elif op == 'multiply':
+                result = a * b
+            else:
+                result = a / b if b != 0 else "Infinity"
+        except Exception as e:
+            result = f"Error: {str(e)}"
+
+    context = {
+        'result': result
+    }
+    return render(request, 'firstapp/calculator.html', context)
+
+def calc(request):
+    return render(request, 'firstapp/calc.html')

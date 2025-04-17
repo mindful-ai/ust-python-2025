@@ -1,0 +1,12 @@
+Session 1: 10 + 20 + 15
+----------------------------------------------------------------------
+
+
+Review of calculator application
+
+1. Develop a simple currency converter function for our firstapp
+    INR <> USD    
+    URL: 127.0.0.1:8000/converter
+2. Integrate the timer functionality in to firstapp
+    Refer -> html-examples/04-timer.html
+    URL: 127.0.0.1:8000/timer

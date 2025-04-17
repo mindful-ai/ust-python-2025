@@ -9,4 +9,6 @@ urlpatterns = [
     path('fruits', views.fruit_list, name='fruits'), # 127.0.0.1:8000/fruits
     path('input', views.input_form, name='input'), # 127.0.0.1:8000/input
     path('result', views.result, name='result'), # 127.0.0.1:8000/result
+    path('calculator', views.calculator, name='calculator'), # 127.0.0.1:8000/calculator
+    path('calc', views.calc, name='calc'), # 127.0.0.1:8000/calc
 ]   
