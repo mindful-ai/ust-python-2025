@@ -193,8 +193,14 @@ LOGIN_REDIRECT_URL = '/'
 student_form.html and student_list.html
 ----------------------------------------------------
 
-add
+add <- this may not work
 <h3>Logged in as {{ request.user }} | <a href="{% url 'logout' %}">Logout</a></h3>
+
+To fix the error for modern versions of Django 5+: for csrf token inclusion
+<form method="post" action="{% url 'logout' %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+</form>
 
 
 Creating a super user
@@ -252,3 +258,28 @@ Different AuthenticationForm inputs:
 PROJECT WITH ADMIN
 
 ----------------------------------------------------------------------
+
+
+First and foremost requirement:
+
+Register the model in admin.py
+
+Create a superuser account:
+
+python manage.py createsuperuser
+
+Run the server:
+
+python manage.py runserver
+
+
+Access the admin interface:
+
+hhtp://127.0.0.1:8000/admin
+
+Try this:
+
+Add a new User 
+Add a new student  
+
+Test it

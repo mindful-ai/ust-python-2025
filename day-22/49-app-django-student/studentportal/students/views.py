@@ -24,4 +24,4 @@ def student_list(request):
     context = {
         'students': Student.objects.all()
     }
-    return render(request, 'students/student_list.html', context)
+    return render(request, 'students/student_list.html', context) 
