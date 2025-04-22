@@ -1,0 +1,15 @@
+Python 3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> L = [1, 1, 1, 0, -1, 1, 1, 1 -1, 0]
+>>> L.index(-1)
+4
+>>> L[:L.index(-1)]
+[1, 1, 1, 0]
+>>> L[:L.index(-1)+1] 
+[1, 1, 1, 0, -1]
+>>> L.insert(0, -1)
+>>> L
+[-1, 1, 1, 1, 0, -1, 1, 1, 0, 0]
+>>> L[:L.index(-1)]   
+[]
+>>>
