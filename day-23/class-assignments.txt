@@ -1,0 +1,20 @@
+Session 1
+------------------------------------------------------------------
+
+
+Study the newly created web application: day-23/50-app-webapp
+
+1. Add a new incident type called 'Natural'
+2. Add 'age' to the forms and update accordingly
+
+Next,
+
+3. Add a 'pie chart' to the dashboard that will depict
+   the number of children, youd adult, adult and seniors
+   who logged the incidents so far
+
+CHALLLENGE PROBLEM: Deadline -> 25 APRIL 2025 EOD
+
+4. Add Login authentication with user registrations to the application
+   This is a challenge problem and it involves going through the documentation
+   and experimentation to add it
