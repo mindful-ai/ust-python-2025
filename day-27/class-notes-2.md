@@ -68,3 +68,24 @@ Merge development into main
 Delete the merged branches
 > git branch -d testing
 > git branch -d development
+
+------------------------------------------------------------------------------------------
+USEFUL COMMANDS SUMMARY
+------------------------------------------------------------------------------------------
+
+
+git status → Check current status
+
+git log → Show commit history
+
+git diff → Show differences before commit
+
+git branch → Show branches
+
+git checkout → Switch branches
+
+git merge → Merge branches
+
+git add <file> / git add . → Stage files
+
+git commit -m "msg" → Commit changes
